@@ -4,8 +4,9 @@ import Header from './components/Header';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import { Container } from 'react-bootstrap';
-import Articles from './components/Articles';
+import ArticleDetailed from './pages/ArticleDetailed';
 import Profile from './components/Profile';
+import Auth from './components/Auth';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<Home />} exact />
-            <Route path='/articles' element={<Articles />} exact />
+            <Route path='/article/:id' element={<ArticleDetailed />} exact />
             <Route path='/profile' element={<Profile />} exact />
+            <Route path='/login' element={<Auth />} exact />
           </Routes>
         </Container>
       </main>
