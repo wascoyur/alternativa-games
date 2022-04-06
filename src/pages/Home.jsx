@@ -1,27 +1,10 @@
 import React, { Fragment } from 'react';
 import { Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
-
+import { articles } from '../assets/articles';
+import { useHistory } from 'react-router-dom';
+import ArticleDetailed from './ArticleDetailed';
 const Home = () => {
-  const articles = [
-    {
-      id: 1,
-      title: 'Есть ли жизнь на Марсе?',
-      content: 'lorem20',
-      tag: 'space',
-    },
-    {
-      id: 2,
-      title: 'Одиноки ли мы во Вселенной?',
-      content: 'lorem20',
-      tag: 'space',
-    },
-    {
-      id: 3,
-      title: 'Инопланетяне среди нас?',
-      content: 'lorem20',
-      tag: 'space',
-    },
-  ];
+  const history = useHistory();
   return (
     <Fragment>
       <h1>Список статей блога</h1>
@@ -31,7 +14,9 @@ const Home = () => {
             key={article.id}
             className='justify-content-center'
             sm={12}
-            md={6}>
+            md={6}
+            action
+            onClick={() => history.push('/')}>
             {article.title}
           </ListGroupItem>
         ))}
@@ -41,3 +26,4 @@ const Home = () => {
 };
 
 export default Home;
+
