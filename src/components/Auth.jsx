@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-// import { login } from '../redux/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { generateToken } from '../functions/generateAuth';
+import { login } from '../redux/userAuthSlice';
 
-const Auth = (login) => {
+const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const handleSubmit = (data) => {
     data.preventDefault();
     console.log({ email, password });
-    dispatch(login(email, password));
+    generateToken({ email, password });
+    dispatch(login({ token: 'token', name: 'name' }));
   };
   useEffect(() => {
-    console.log('getItem', localStorage.getItem('email'));
+    // console.log('getItem', localStorage.getItem('email'));
   }, [email]);
 
   return (
