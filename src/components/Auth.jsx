@@ -14,8 +14,12 @@ const Auth = () => {
   const handleSubmit = (data) => {
     data.preventDefault();
     console.log({ email, password });
-    generateToken({ email, password });
-    dispatch(login({ token: 'token', name: 'name' }));
+    dispatch(
+      login({
+        token: generateToken({ email, password }),
+        name: email.split('@')[0],
+      }),
+    );
   };
   useEffect(() => {
     // console.log('getItem', localStorage.getItem('email'));

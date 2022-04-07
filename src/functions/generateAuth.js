@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const generateToken = (obj) => {
-  const out = JWT.sign(JSON.stringify(obj));
-  console.log({ out });
+  const out = JSON.stringify(btoa(obj.email + obj.password));
+  // console.log({ out });
   return out;
-};
+};;;;
