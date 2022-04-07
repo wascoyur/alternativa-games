@@ -8,6 +8,7 @@ import ArticleDetailed from './pages/ArticleDetailed';
 import Profile from './components/Profile';
 import Auth from './components/Auth';
 import RequireAuth from './components/RequireAuth';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
               }
               exact
             />
-            <Route path='/login' element={<Auth />} exact />
+            <Route path='/login' element={<LoginPage />} exact />
           </Routes>
         </Container>
       </main>

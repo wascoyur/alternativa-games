@@ -5,16 +5,17 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBox from './SearchBox';
 import { Route } from 'react-router-dom';
+import { logout } from '../redux/userAuthSlice';
 
 const Header = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   //   const userLogin = useSelector((state) => state.userLogin);
   //
   // const { userInfo } = userLogin;
-  const userInfo = null;
+  const user = useSelector((state) => state.user);
 
   const logoutHandler = () => {
-    // dispatch({});
+    dispatch(logout());
   };
   return (
     <header>
@@ -29,8 +30,8 @@ const Header = () => {
             <SearchBox />
 
             <Nav className='ml-auto' style={{ marginLeft: 'auto' }}>
-              {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
+              {user.token ? (
+                <NavDropdown title={user.name.split('@')[0]} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Профиль</NavDropdown.Item>
                   </LinkContainer>
@@ -40,9 +41,7 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <i className='fas fa-user'></i>Вход
-                  </Nav.Link>
+                  <Nav.Link>Вход</Nav.Link>
                 </LinkContainer>
               )}
             </Nav>
