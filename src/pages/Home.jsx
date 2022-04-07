@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { articles } from '../assets/articles';
 import { useNavigate } from 'react-router-dom';
-import ArticleDetailed from './ArticleDetailed';
 const Home = () => {
   const navigate = useNavigate();
   const handleClick = ({ article }) => {
@@ -26,15 +25,6 @@ const Home = () => {
           </ListGroupItem>
         ))}
       </ListGroup>
-
-      <ul>
-        {articles.map((article) => (
-          <li key={article.id} onClick={(article) => handleClick({ article })}>
-            {article.id}
-            {article.tag}
-          </li>
-        ))}
-      </ul>
     </Fragment>
   );
 };
