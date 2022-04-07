@@ -26,7 +26,15 @@ function App() {
               }
               exact
             />
-            <Route path='/profile' element={<Profile />} exact />
+            <Route
+              path='/profile'
+              element={
+                <RequireAuth>
+                  <Profile />
+                </RequireAuth>
+              }
+              exact
+            />
             <Route path='/login' element={<Auth />} exact />
           </Routes>
         </Container>
