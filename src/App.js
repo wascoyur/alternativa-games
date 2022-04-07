@@ -7,6 +7,7 @@ import { Container } from 'react-bootstrap';
 import ArticleDetailed from './pages/ArticleDetailed';
 import Profile from './components/Profile';
 import Auth from './components/Auth';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
   return (
@@ -16,7 +17,15 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<Home />} exact />
-            <Route path='/article/:id' element={<ArticleDetailed />} exact />
+            <Route
+              path='/article/:id'
+              element={
+                <RequireAuth>
+                  <ArticleDetailed />
+                </RequireAuth>
+              }
+              exact
+            />
             <Route path='/profile' element={<Profile />} exact />
             <Route path='/login' element={<Auth />} exact />
           </Routes>
