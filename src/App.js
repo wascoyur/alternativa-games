@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import Auth from './components/Auth';
 import RequireAuth from './components/RequireAuth';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               exact
             />
             <Route path='/login' element={<LoginPage />} exact />
+            <Route path='/register' element={<RegisterPage />} exact />
           </Routes>
         </Container>
       </main>

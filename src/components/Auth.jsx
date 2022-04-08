@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const Auth = ({ email, password, handleSubmit }) => {
+const Auth = ({ email, password, handleSubmit, location }) => {
+  const buttonName = location.pathname === '/register' ? 'Регистрация' : 'Вход';
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -22,7 +23,7 @@ const Auth = ({ email, password, handleSubmit }) => {
           onChange={(e) => password(e.target.value)}></Form.Control>
       </Form.Group>
       <Button type='submit' variant='primary' className='my-3'>
-        Войти
+        {buttonName}
       </Button>
     </Form>
   );
