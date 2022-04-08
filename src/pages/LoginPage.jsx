@@ -11,14 +11,14 @@ import { generateToken } from '../functions/generateAuth';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [checkPass, setCheckPass] = useState(false);
   const user = useSelector((state) => state.user);
+  const [visible, setUnvisible] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const disp = (email, password) => {
-    console.log('disp');
+  const disp = (email, password) => (dispatch) => {
+    console.log('disp login');
     const token = generateToken({ email, password });
     dispatch(
       login({
@@ -28,43 +28,37 @@ const LoginPage = () => {
     );
   };
   const comparePass = (email, password) => {
-    //get new email
-    //get token by email from localStorage
     const savedToken = localStorage.getItem(email);
-    //if no token, go register
-    if (savedToken == null) return;
-    //else {get token new user by email + pass}
+    if (savedToken == null) navigate('/register');
     const newToken = generateToken({ email, password });
     if (newToken == savedToken) {
-      setCheckPass(true);
-      dispatch(
-        login({
-          token: savedToken,
-          name: email,
-        }),
-      );
+      dispatch(login({ token: savedToken, name: email }));
     } else {
-      setCheckPass(false);
+      setUnvisible(true);
     }
-    navigate('/');
-    //if new token == old token, grant privelegy
   };
 
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
     e.preventDefault();
     comparePass(email, password);
-    navigate('/register');
+    // navigate('/register');
   };
 
   useEffect(() => {
-    if (user.token !== '') navigate('./');
+    if (user.token !== null) navigate('/');
   }, [user]);
 
   return (
     <FormContainer>
       <title>Вход</title>
       <h3>Авторизация</h3>
+      {!visible ? null : (
+        <span
+          style={{ fontSize: 18, backgroundColor: 'black', color: 'white' }}>
+          {'неверный логин'}
+        </span>
+      )}
       <Auth
         email={setEmail}
         password={setPassword}
