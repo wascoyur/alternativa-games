@@ -8,12 +8,20 @@ import compareToken from '../functions/processToken';
 import { login } from '../redux/userAuthSlice';
 import { generateToken } from '../functions/generateAuth';
 
-const LoginPage = ({ userLogin }) => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch;
   const token = generateToken({ email, password });
   const getToken = () => compareToken(email);
+
+  const checkPass = () => {
+    //get new email
+    //get token by email from localStorage
+    //if no token, go register
+    //else {get token new user by email + pass}
+    //if new token == old token, grannt privelegy
+  };
 
   dispatch(
     login({
@@ -26,7 +34,8 @@ const LoginPage = ({ userLogin }) => {
   const handleSubmit = (e) => {
     const formData = new FormData(e.currentTarget);
     e.preventDefault();
-    console.log(formData.get('email'), formData.get('password'));
+    // setEmail(formData.get('email'));
+    // setPassword(formData.get('password'));
   };
   return (
     <FormContainer>
