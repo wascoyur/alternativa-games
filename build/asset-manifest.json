@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alternativa-games/static/css/main.d5654ac7.css",
+    "main.js": "/alternativa-games/static/js/main.87779853.js",
+    "index.html": "/alternativa-games/index.html",
+    "main.d5654ac7.css.map": "/alternativa-games/static/css/main.d5654ac7.css.map",
+    "main.87779853.js.map": "/alternativa-games/static/js/main.87779853.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5654ac7.css",
+    "static/js/main.87779853.js"
+  ]
+}
