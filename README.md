@@ -1,4 +1,5 @@
 Deploy
+!  После перехода на стартовую страницу, необходимо её обновить
  https://wascoyur.github.io/alternativa-games/
 ===============
 Условия:
